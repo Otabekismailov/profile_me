@@ -785,9 +785,195 @@
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* ---------- CV TEMPLATE (used for PDF generation) ---------- */
+  .cv-print {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 794px;            /* A4 width @ 96dpi */
+    padding: 40px 50px;
+    background: #fff;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .cv-print.generating {
+    opacity: 1;
+    z-index: 9999;
+  }
+  .cv-print .cv-name {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin: 0 0 6px;
+    line-height: 1;
+  }
+  .cv-print .cv-subtitle {
+    font-size: 16px;
+    color: #1B4D4A;
+    font-style: italic;
+    margin: 0 0 16px;
+  }
+  .cv-print .cv-contact { font-size: 13px; color: #333; margin: 0 0 4px; }
+  .cv-print .cv-contact a, .cv-print .cv-links a { color: #000; text-decoration: underline; }
+  .cv-print .cv-links {
+    font-size: 13px;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #C9C0AE;
+  }
+  .cv-print h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #1B4D4A;
+    text-transform: uppercase;
+    margin: 18px 0 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #C9C0AE;
+  }
+  .cv-print p { margin: 0 0 8px; }
+  .cv-print .cv-skills { width: 100%; border-collapse: collapse; margin: 4px 0 6px; }
+  .cv-print .cv-skills td { padding: 4px 0; vertical-align: top; }
+  .cv-print .cv-skills td:first-child { font-weight: 700; width: 170px; padding-right: 14px; }
+  .cv-print .cv-job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 4px;
+  }
+  .cv-print .cv-job-title { font-size: 15px; font-weight: 700; }
+  .cv-print .cv-job-date { font-size: 13px; color: #333; }
+  .cv-print .cv-job-meta { font-size: 13.5px; margin: 2px 0 6px; }
+  .cv-print .cv-job-meta strong { color: #1B4D4A; }
+  .cv-print .cv-job-meta em { color: #555; }
+  .cv-print ul { margin: 4px 0 8px 20px; padding: 0; }
+  .cv-print ul li { margin-bottom: 4px; }
+  .cv-print .cv-proj-title { font-weight: 700; font-size: 14.5px; margin: 4px 0 4px; }
+  .cv-print .cv-stack { margin-top: 4px; }
+  .cv-print .cv-edu-school { font-weight: 700; font-size: 14px; }
+  .cv-print .cv-edu-detail { font-style: italic; color: #444; font-size: 13px; }
+  .cv-print .cv-langs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    font-size: 13.5px;
+  }
+  .cv-print .cv-langs strong { display: inline-block; min-width: 80px; }
+
 </style>
 </head>
 <body>
+
+<!-- ============= CV (print only) ============= -->
+<div class="cv-print" aria-hidden="true">
+  <h1 class="cv-name">OTABEK ISMAILOV</h1>
+  <p class="cv-subtitle">QA Engineer · ERP &amp; Fintech Testing · Python Automation</p>
+  <p class="cv-contact">Tashkent, Uzbekistan&nbsp; |&nbsp; +998 91 348 95 75&nbsp; |&nbsp; 15ismailov1995@gmail.com</p>
+  <p class="cv-links">
+    <a href="https://www.linkedin.com/in/otabek-ismailov-0b0970262/">LinkedIn</a> &nbsp;|&nbsp;
+    <a href="https://github.com/Otabekismailov">GitHub</a> &nbsp;|&nbsp;
+    <a href="https://t.me/ismailov_1212">Telegram</a>
+  </p>
+
+  <h2>Professional Summary</h2>
+  <p>
+    QA Engineer with 3+ years in software, including 1 year of backend development (Python, Django,
+    PostgreSQL), 3 months of React frontend work, and 2 years of QA on complex ERP and fintech platforms.
+    This full-stack background drives my testing approach: I read the code, query the database, and trace
+    requests end-to-end — surfacing bugs that surface-level testing misses. Specialized in business logic
+    validation, API testing, and Python automation.
+  </p>
+
+  <h2>Technical Skills</h2>
+  <table class="cv-skills">
+    <tr><td>Manual Testing</td><td>Test design, regression, smoke, edge cases, business logic validation</td></tr>
+    <tr><td>API Testing</td><td>REST API, Postman, Curl, JWT, OAuth, status code &amp; response validation</td></tr>
+    <tr><td>Automation</td><td>Python, Selenium, Pytest, factory_boy, pytest-html, Excel reporting</td></tr>
+    <tr><td>Backend &amp; DB</td><td>Django, Django REST Framework, PostgreSQL, SQL queries</td></tr>
+    <tr><td>DevOps</td><td>Linux/Ubuntu, Git, Docker (basic), SSH, server deployment</td></tr>
+    <tr><td>Frontend</td><td>HTML, CSS, React (basics)</td></tr>
+  </table>
+
+  <h2>Professional Experience</h2>
+  <div class="cv-section">
+    <div class="cv-job-head">
+      <span class="cv-job-title">QA Engineer</span>
+      <span class="cv-job-date">May 2024 — Present</span>
+    </div>
+    <div class="cv-job-meta">
+      <strong>Deepen ERP</strong> · <em>Tashkent, Uzbekistan · ERP / B2B SaaS for fitness clubs and sports facilities</em>
+    </div>
+    <ul>
+      <li>Lead manual and automation testing of a multi-tenant ERP platform managing membership, payment, trainer scheduling, attendance, inventory, and reporting modules.</li>
+      <li>Validate complex business logic including split payments, role-based permissions, multi-location merchant flows, and edge cases that surface only under real-world load.</li>
+      <li>Built and maintain Python + Selenium + Pytest automation suites with factory_boy fixtures and pytest-html reporting; reduced regression cycle time and increased coverage.</li>
+      <li>Test Django REST Framework APIs using Postman and Curl — covering authentication (JWT), validation, status codes, and response time benchmarks.</li>
+      <li>Write and maintain detailed test cases, regression checklists, and structured bug reports with clear reproduction steps and severity classification.</li>
+      <li>Collaborate with backend developers using SQL queries, Django ORM, and server logs to root-cause issues and verify fixes at the database level.</li>
+    </ul>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-job-head">
+      <span class="cv-job-title">Frontend Developer</span>
+      <span class="cv-job-date">Feb 2024 — May 2024</span>
+    </div>
+    <div class="cv-job-meta">
+      <strong>Freelance</strong> · <em>Self-initiated projects · ~3 months</em>
+    </div>
+    <ul>
+      <li>Built responsive SPA interfaces with React, HTML5, and modern CSS — focused on layout, state management, and component composition.</li>
+      <li>Integrated frontend with REST APIs; handled authentication flows, form validation, and error states.</li>
+      <li>Practiced cross-browser and responsive testing — a foundation that later sharpened my QA eye for UI defects.</li>
+    </ul>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-job-head">
+      <span class="cv-job-title">Backend Developer</span>
+      <span class="cv-job-date">Feb 2023 — Feb 2024</span>
+    </div>
+    <div class="cv-job-meta">
+      <strong>Freelance</strong> · <em>Self-initiated projects · ~1 year</em>
+    </div>
+    <ul>
+      <li>Built REST APIs with Python, Django, and Django REST Framework — including JWT authentication, role-based permissions, and CRUD endpoints.</li>
+      <li>Designed PostgreSQL schemas, wrote raw SQL and Django ORM queries, and managed migrations.</li>
+      <li>Deployed projects on Linux/Ubuntu servers using SSH, Nginx, and Docker basics — foundation that powers my current QA work on backend-heavy ERP systems.</li>
+    </ul>
+  </div>
+
+  <h2>Selected Project</h2>
+  <div class="cv-section">
+    <p class="cv-proj-title">Deepen ERP — Fitness &amp; Sports Management Platform</p>
+    <p>
+      A comprehensive ERP system for fitness clubs and sports facilities, handling membership
+      lifecycles, payment processing (including split payments), trainer scheduling, attendance,
+      inventory, and full financial reporting. As QA Engineer, owned testing across manual, API,
+      and automation layers, with deep validation of the business logic underpinning the entire
+      revenue model.
+    </p>
+    <p class="cv-stack"><strong>Stack:</strong> Python, Django, Django REST Framework, PostgreSQL, React, Selenium, Pytest, Postman, Linux, Git, Docker.</p>
+  </div>
+
+  <h2>Education</h2>
+  <div class="cv-section">
+    <p class="cv-edu-school">PDP University</p>
+    <p class="cv-edu-detail">Computer Science / IT · Tashkent, Uzbekistan</p>
+  </div>
+
+  <h2>Languages</h2>
+  <div class="cv-langs">
+    <div><strong>Uzbek</strong> Native</div>
+    <div><strong>Russian</strong> Conversational (B1)</div>
+  </div>
+</div>
+<!-- ============= /CV ============= -->
 
 <nav>
   <div class="container nav-inner">
@@ -810,7 +996,7 @@
         <div class="hero-eyebrow">Available for new opportunities</div>
         <h1>QA Engineer<br>building <em>reliable</em><br>software systems.</h1>
         <p class="hero-tagline">
-          I'm a QA Engineer with hands-on experience testing complex ERP and fintech platforms.
+          QA Engineer with 3+ years in tech — a year of backend development with Python &amp; Django, a few months of React frontend, and 2 years testing real-world ERP and fintech platforms.
           I specialize in business logic validation, API testing, and Python automation —
           the kind of testing that catches issues real users would actually hit.
         </p>
@@ -819,7 +1005,7 @@
             Get in touch
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="Otabek_Ismailov_CV.pdf" class="btn btn-secondary" download>
+          <a href="#" class="btn btn-secondary" id="download-cv-btn">
             Download CV
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           </a>
@@ -850,7 +1036,7 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p>
-          I've spent the last two and a half years embedded in a real-world ERP platform —
+          I started in 2023 as a backend developer working with Python and Django, then spent a few months on the React frontend side before moving into QA — where I've spent the last two years embedded in a real-world ERP platform —
           testing the kind of business logic that actually matters: payment splits, role-based
           permissions, multi-location merchant flows, and edge cases that only surface under load.
         </p>
@@ -872,7 +1058,7 @@
         </div>
         <div class="fact">
           <span class="fact-label">Experience</span>
-          <span class="fact-value">2+ years in QA</span>
+          <span class="fact-value">3+ years total · 2 in QA</span>
         </div>
         <div class="fact">
           <span class="fact-label">Domain</span>
@@ -980,8 +1166,8 @@
     <div class="experience-list">
       <div class="experience-item reveal">
         <div class="exp-period">
-          <strong>Jan 2023 — Present</strong>
-          ~2.5 years
+          <strong>May 2024 — Present</strong>
+          ~2 years
         </div>
         <div>
           <h3 class="exp-role">QA Engineer</h3>
@@ -994,6 +1180,38 @@
             <li>Test Django REST Framework APIs using Postman and Curl — covering authentication, validation, status codes, and response times.</li>
             <li>Write and maintain detailed test cases, regression checklists, and structured bug reports.</li>
             <li>Collaborate with backend developers using SQL, server logs, and the Django ORM to root-cause issues quickly.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item reveal">
+        <div class="exp-period">
+          <strong>Feb 2024 — May 2024</strong>
+          ~3 months
+        </div>
+        <div>
+          <h3 class="exp-role">Frontend Developer</h3>
+          <div class="exp-company">Freelance / Self-initiated projects</div>
+          <ul class="exp-list">
+            <li>Built responsive single-page interfaces with React, HTML5, and modern CSS — focused on layout, state, and component composition.</li>
+            <li>Integrated frontend with REST APIs and handled authentication flows, form validation, and error states.</li>
+            <li>Practiced cross-browser testing and responsive design — experience that later sharpened my QA eye for UI defects.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item reveal">
+        <div class="exp-period">
+          <strong>Feb 2023 — Feb 2024</strong>
+          ~1 year
+        </div>
+        <div>
+          <h3 class="exp-role">Backend Developer</h3>
+          <div class="exp-company">Freelance / Self-initiated projects</div>
+          <ul class="exp-list">
+            <li>Built REST APIs with Python, Django, and Django REST Framework — including authentication (JWT), permissions, and CRUD endpoints.</li>
+            <li>Designed PostgreSQL schemas, wrote raw SQL queries and Django ORM logic; managed migrations.</li>
+            <li>Deployed projects on Linux/Ubuntu servers using SSH, Nginx, and Docker basics — foundation that powers my current QA work on backend-heavy ERP systems.</li>
           </ul>
         </div>
       </div>
@@ -1218,7 +1436,49 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
+  // Download CV as PDF (generated from .cv-print block)
+  document.getElementById('download-cv-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (typeof html2pdf === 'undefined') {
+      alert('PDF kutubxonasi yuklanmadi. Internetga ulanishni tekshiring.');
+      return;
+    }
+    const btn = e.currentTarget;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = 'Generating…';
+    btn.style.pointerEvents = 'none';
+
+    const element = document.querySelector('.cv-print');
+    // Keep element invisible to user but fully rendered for html2canvas
+    const restore = () => {
+      btn.innerHTML = originalText;
+      btn.style.pointerEvents = '';
+    };
+
+    setTimeout(() => {
+      html2pdf().set({
+        margin:       [10, 10, 10, 10],
+        filename:     'Otabek_Ismailov_CV.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff',
+          windowWidth: 794,
+          width: 794
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['css', 'legacy'] }
+      }).from(element).save().then(restore).catch((err) => {
+        console.error('PDF generation failed:', err);
+        alert('PDF yaratishda xatolik: ' + err.message);
+        restore();
+      });
+    }, 100);
+  });
+
   // Smooth reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
